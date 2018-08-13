@@ -1,6 +1,22 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:main, :rank, :index, :show]
+  
+  def main
+  end 
+  
+  def rank
+  end
 
+  def sports
+  end
+
+  def channelinfo
+  end
+
+  def forlater
+  end
+  
   # GET /notes
   # GET /notes.json
   def index

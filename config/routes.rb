@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
   
-  root 'notes#main'
+  devise_for :users
+  root to: 'notes#main'
   
   get '/notes/rank' => 'notes#rank'
   get '/notes/sports' => 'notes#sports'

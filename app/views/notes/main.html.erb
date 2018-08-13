@@ -2,6 +2,10 @@
 <hr>
 <%= link_to "Lanking", "/notes/rank" %>
 <%= link_to "게시판", "/notes" %>
-<%= link_to "Log in", "#" %> <!--TODO: 주소 지정-->
+<% if user_signed_in? %>
+  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Log in", new_user_session_path %> 
+<% end %>
 <hr>
 <h2><%= link_to "Game Start", "/notes/sports" %></h2> 

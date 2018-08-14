@@ -4,11 +4,19 @@
   <strong>Title:</strong>
   <%= @note.title %>
 </p>
-
+<p>
+  <strong>작성자:</strong>
+  <%= @note.user %>
+</p>
+<hr />
 <p>
   <strong>Content:</strong>
   <%= @note.content %>
 </p>
+
+
+
+
 
 <%= link_to 'Edit', edit_note_path(@note) %> |
 <%= link_to 'Back', notes_path %>
@@ -21,10 +29,10 @@
   <input type='text' name='input_content'></input>
   <input type='submit'></input>
 </form>
-
+<hr />
 <% @note.comments.each do |comment| %>
   <p>
-    <%= comment.content %> | 
+    작성자 : <%= comment.user %> | 내용 : <%= comment.content %> | 
     <a href='/comments/<%= comment.id %>'
        data-confirm='댓글을 삭제합니다.'
        data-method='DELETE'>

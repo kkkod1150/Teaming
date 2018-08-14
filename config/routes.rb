@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  
-  
+# NOTE
   devise_for :users
   root to: 'notes#main'
   
@@ -11,5 +10,10 @@ Rails.application.routes.draw do
 
   resources :notes
   
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+# Comment
+  # Create
+  post '/comments'=> 'comments#create'
+  
+  # Destroy
+  delete '/comments/:id' => 'comments#destroy'
 end

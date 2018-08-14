@@ -26,6 +26,8 @@ class NotesController < ApplicationController
   # GET /notes/1
   # GET /notes/1.json
   def show
+    @token = form_authenticity_token
+    @note = Note.find params[:id]
   end
 
   # GET /notes/new

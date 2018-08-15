@@ -6,7 +6,7 @@
 </p>
 <p>
   <strong>작성자:</strong>
-  <%= @note.user %>
+  <%= @note.user_email_no %>
 </p>
 <hr />
 <p>
@@ -32,7 +32,7 @@
 <hr />
 <% @note.comments.each do |comment| %>
   <p>
-    작성자 : <%= comment.user %> | 내용 : <%= comment.content %> | 
+    작성자 : <%= comment.user_email_co %> | 내용 : <%= comment.content %> | 
     <a href='/comments/<%= comment.id %>'
        data-confirm='댓글을 삭제합니다.'
        data-method='DELETE'>

@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     comment = Comment.new
     comment.content = params[:input_content]
     comment.note_id = params[:note_id]
-    comment.user = current_user.email
+    comment.user_email_co = current_user.email
     comment.save
     redirect_to "/notes/#{comment.note.id}"
   end

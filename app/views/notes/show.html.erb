@@ -10,6 +10,11 @@
   <%= @note.content %>
 </p>
 
+<p>
+  <strong>Writer:</strong>
+  <%= @note.user_email %>
+</p>
+
 <% if @note.user == current_user %>
   <%= link_to 'Edit', edit_note_path(@note) %> |
 <% end %>
@@ -21,6 +26,7 @@
   <input type='hidden' name='authenticity_token' value=<%= @token %>></input>
   <input type='hidden' name='note_id' value=<%= @note.id %>></input>
   <input type='hidden' name='user_id' value=<%= @user.id %>></input>
+  <input type='hidden' name='user_email' value=<%= @user.email %>></input>
   <strong>Comment: </strong>
   <input type='text' name='input_content'></input>
   <input type='submit'></input>
@@ -28,7 +34,7 @@
 
 <% @note.comments.each do |comment| %>
   <p>
-    <%= comment.content %> | 
+    <%= comment.content %> | writer: <%= comment.user_email %>
     <% if comment.user == current_user %>
       <a href='/comments/<%= comment.id %>'
         data-confirm='댓글을 삭제합니다.'

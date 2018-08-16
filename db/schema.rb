@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 20180813135653) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "content"
+    t.string   "user_email"
     t.integer  "note_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 20180813135653) do
   create_table "notes", force: :cascade do |t|
     t.string   "title"
     t.string   "content"
+    t.string   "user_email"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

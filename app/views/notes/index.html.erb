@@ -17,6 +17,7 @@
       <tr>
         <td><%= note.title %></td>
         <td><%= note.content %></td>
+        <td><%= note.user_email %></td>
         <td><%= link_to 'Show', note %></td>
         <% if note.user == current_user %>
         <td><%= link_to 'Edit', edit_note_path(note) %></td>

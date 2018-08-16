@@ -15,9 +15,11 @@ ActiveRecord::Schema.define(version: 20180813135653) do
   create_table "comments", force: :cascade do |t|
     t.string   "content"
     t.integer  "note_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["note_id"], name: "index_comments_on_note_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "homes", force: :cascade do |t|
@@ -28,8 +30,10 @@ ActiveRecord::Schema.define(version: 20180813135653) do
   create_table "notes", force: :cascade do |t|
     t.string   "title"
     t.string   "content"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

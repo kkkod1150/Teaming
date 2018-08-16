@@ -2,9 +2,6 @@ class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:main, :rank, :index, :show]
   
-
-  
-  
   def main
   end 
   
@@ -31,6 +28,7 @@ class NotesController < ApplicationController
   def show
     @token = form_authenticity_token
     @note = Note.find params[:id]
+    @user = current_user
   end
 
   # GET /notes/new
@@ -40,13 +38,13 @@ class NotesController < ApplicationController
 
   # GET /notes/1/edit
   def edit
+    check_user
   end
 
   # POST /notes
   # POST /notes.json
   def create
     @note = Note.new(note_params)
-
     respond_to do |format|
       if @note.save
         format.html { redirect_to @note, notice: 'Note was successfully created.' }
@@ -75,6 +73,7 @@ class NotesController < ApplicationController
   # DELETE /notes/1
   # DELETE /notes/1.json
   def destroy
+    check_user
     @note.destroy
     respond_to do |format|
       format.html { redirect_to notes_url, notice: 'Note was successfully destroyed.' }
@@ -90,6 +89,12 @@ class NotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.require(:note).permit(:title, :content)
+      params.require(:note).permit(:title, :content, :user_id)
+    end
+    
+    def check_user
+      if @note.user != current_user
+        redirect_to notes_path
+      end
     end
 end

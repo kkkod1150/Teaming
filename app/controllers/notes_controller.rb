@@ -20,7 +20,9 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.all
+    # @notes = Note.all  // 기존에 Note.all 을 kaminari gem을 통해서 pagination 하면서 아래의 코드로 수정되었다.
+    # 기존의 index.html.erb의 코드에서는 <% paginate @notes %> 라는 코드가 추가된것 말고는 달라진 것이 하나도 없다.
+    @notes = Note.page params[:page]
   end
 
   # GET /notes/1

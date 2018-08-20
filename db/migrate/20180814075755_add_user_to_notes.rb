@@ -1,5 +1,0 @@
-class AddUserToNotes < ActiveRecord::Migration[5.0]
-  def change
-    add_column :notes, :user, :string
-  end
-end

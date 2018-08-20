@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/notes/channelinfo' => 'notes#channelinfo'
   get '/notes/forlater' => 'notes#forlater'
 
+
   resources :notes
   
 # Comment
@@ -16,4 +17,9 @@ Rails.application.routes.draw do
   
   # Destroy
   delete '/comments/:id' => 'comments#destroy'
+  
+#soccer
+  get '/soccer/ch1' => 'soccer_ch1#s_1_main'
+  get '/soccer/new' => 'soccer_ch1#new'
+  post '/soccer/create' => 'soccer_ch1#create'
 end

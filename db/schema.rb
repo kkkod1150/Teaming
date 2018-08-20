@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20180813135653) do
 
+
   create_table "comments", force: :cascade do |t|
     t.string   "content"
     t.string   "user_email"
@@ -19,6 +20,7 @@ ActiveRecord::Schema.define(version: 20180813135653) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
     t.index ["note_id"], name: "index_comments_on_note_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -36,6 +38,14 @@ ActiveRecord::Schema.define(version: 20180813135653) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_notes_on_user_id"
+  end
+
+  create_table "soccer_ch1s", force: :cascade do |t|
+    t.string   "room_name"
+    t.string   "site"
+    t.string   "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

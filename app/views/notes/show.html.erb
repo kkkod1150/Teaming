@@ -3,18 +3,16 @@
 <p>
   <strong>Title:</strong>
   <%= @note.title %>
+  <strong>Writer:</strong>
+  <%= @note.user_email %>
 </p>
 
 <hr />
 <p>
   <strong>Content:</strong>
-  <%= @note.content %>
+  <%= @note.content.html_safe %>
 </p>
 
-<p>
-  <strong>Writer:</strong>
-  <%= @note.user_email %>
-</p>
 
 <% if @note.user == current_user %>
   <%= link_to 'Edit', edit_note_path(@note) %> |
@@ -29,20 +27,31 @@
   <input type='hidden' name='user_id' value=<%= @user.id %>></input>
   <input type='hidden' name='user_email' value=<%= @user.email %>></input>
   <strong>Comment: </strong>
-  <input type='text' name='input_content'></input>
-  <input type='submit'></input>
+  <div class="input-group mb-3">
+    <input type="text" name='input_content' class="form-control" placeholder="댓글을 적어주세요" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="submit" id="button-addon2">등록</button>
+    </div>
+  </div>
 </form>
 <hr />
 <% @note.comments.each do |comment| %>
   <p>
-    <%= comment.content %> | writer: <%= comment.user_email %>
-    <% if comment.user == current_user %>
-      <a href='/comments/<%= comment.id %>'
-        data-confirm='댓글을 삭제합니다.'
-        data-method='DELETE'>
-        --삭제--
-      </a>
-    <% end %>
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <td><%= comment.content %></td>
+          <td>writer: <%= comment.user_email %></td>
+          <% if comment.user == current_user %>
+            <td><a href='/comments/<%= comment.id %>'
+              data-confirm='댓글을 삭제합니다.'
+              data-method='DELETE'>
+              --삭제--
+            </a></td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
 
   </p>
 <% end %>

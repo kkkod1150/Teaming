@@ -1,15 +1,23 @@
 <h1>이곳은 CH1 방들이 보여질 공간입니다.</h1>
 <%= link_to "새로운방 만들기", "/soccer/new" %>
 <p>
+<strong>방번호</strong>    
 <strong>방제목</strong>
 <strong>위치</strong>
 <strong>날짜</strong>
-<br>
+<hr/>
 <% @rooms.each do |room| %>
+    <%= room.id %>
     <%= room.room_name %>
     <%= room.site %>
     <%= room.date %>
-    <br>
+
+    <form action ="/soccer/<%= room.id %>">
+        <input type="submit" value="참가"></input>
+    </form>
+    <hr/>
     <!--TODO: 참가버튼만들기, 참가인원 카운트, 참가시 방 뷰페이지.-->
 <% end %>
 </p>
+<%= link_to '메인으로', '/' %>
+<%= link_to '이전화면', '/notes/channelinfo' %>

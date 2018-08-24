@@ -1,0 +1,6 @@
+<strong> <%= @roomnumber %>번 방입니다.</strong><br>
+<% @memberinrooms.each do |memberinroom| %>
+  <%= memberinroom.user_email %>
+  <br>
+<% end %>
+<!--<link_to action = "/soccer/:id" method: "delete">방 나가기</link_to> %>-->

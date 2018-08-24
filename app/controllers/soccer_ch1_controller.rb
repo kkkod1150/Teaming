@@ -13,6 +13,8 @@ class SoccerCh1Controller < ApplicationController
     room.site = params[:site]
     room.date = params[:date]
     room.save
+    @@roomid = room.id
+    
     redirect_to "/soccer/#{room.id}"
   end
 
@@ -27,6 +29,18 @@ class SoccerCh1Controller < ApplicationController
     @memberinroom.user_email = current_user.email
     @memberinroom.room_id = @roomnumber                 #컬럼명 user 아니고 user_id임
     @memberinroom.save
+    @@memberinroom = @memberinroom.id 
     @memberinrooms = Userforroom.where(:room_id => "#{@roomnumber}").all
+  end
+  
+  def destroy
+    if Userforroom.where(:room_id => "#{params[:id]}").count == 1
+      SoccerCh1.find(params[:id]).delete
+      redirect_to "/soccer/ch1"
+    else
+      Userforroom.find(@@memberinroom).delete
+      redirect_to "/soccer/ch1"
+    end
+    
   end
 end

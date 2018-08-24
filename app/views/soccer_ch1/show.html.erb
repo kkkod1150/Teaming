@@ -3,4 +3,5 @@
   <%= memberinroom.user_email %>
   <br>
 <% end %>
-<!--<link_to action = "/soccer/:id" method: "delete">방 나가기</link_to> %>-->
+<%= @memberinroom.id %>
+<%= link_to "방 나가기", "/soccer/#{@roomnumber}", method: :delete %>

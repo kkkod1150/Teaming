@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 # NOTE
   devise_for :users
+  # path: 'user', #컨트롤러 이름
+  # path_names: {sign_in: 'login', sign_out: 'logout'} #액션 이름
+
   root to: 'notes#main'
   
   get '/notes/rank' => 'notes#rank'
@@ -18,8 +21,18 @@ Rails.application.routes.draw do
   # Destroy
   delete '/comments/:id' => 'comments#destroy'
   
-#soccer
+# Soccer
   get '/soccer/ch1' => 'soccer_ch1#s_1_main'
   get '/soccer/new' => 'soccer_ch1#new'
   post '/soccer/create' => 'soccer_ch1#create'
+  
+# Profile
+  get '/my_profile',     to: 'profiles#show'
+  get '/new_profile', to: 'profiles#new'
+  get '/create_profile', to: 'profiles#new'
+  post '/create_profile', to: 'profiles#create'
+  get '/edit_profile',   to: 'profiles#edit'
+  get '/update_profile', to: 'profiles#edit'
+  patch '/update_profile', to: 'profiles#update'
+
 end

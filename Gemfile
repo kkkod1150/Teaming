@@ -5,6 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'tinymce-rails'
+
+gem 'carrierwave'
+gem 'mini_magick'
 gem "bootstrap_form", ">= 4.0.0.alpha1"
 gem 'bootstrap'
 gem 'devise-bootstrap-views'
